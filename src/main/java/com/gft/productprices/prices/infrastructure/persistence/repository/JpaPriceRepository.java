@@ -19,7 +19,7 @@ public interface JpaPriceRepository extends JpaRepository<PriceEntity, Long> {
             "order by p.priority DESC " +
             "limit 1")
     PriceEntity findPrice(@Param("productId") Long productId,
-                          @Param("brandId") Long brandId,
+                          @Param("brandId") Integer brandId,
                           @Param("applicationDate") Date applicationDate);
 
 }

@@ -8,6 +8,6 @@ import java.util.Date;
 
 public interface PriceRepository {
 
-    Price findPrice(Date time, Long productId, Long brandId) throws PriceNotFoundException;
+    Price findPrice(Date time, Long productId, Integer brandId) throws PriceNotFoundException;
 
 }

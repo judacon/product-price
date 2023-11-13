@@ -24,7 +24,7 @@ public class H2PriceRepository implements PriceRepository{
     }
 
     @Override
-    public Price findPrice(Date applicationDate, Long productId, Long brandId) throws PriceNotFoundException {
+    public Price findPrice(Date applicationDate, Long productId, Integer brandId) throws PriceNotFoundException {
         PriceEntity priceEntity=jpaPriceRepository.findPrice(productId, brandId, applicationDate);
         if (priceEntity == null) {
             throw new PriceNotFoundException("productId: " + productId

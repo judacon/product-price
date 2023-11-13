@@ -1,68 +1,41 @@
 package com.gft.productprices.prices.domain.model;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-public class PriceTest {
+class PriceTest {
 
     @Test
-    public void testPriceConstructorWithValidArguments() {
-        // Create valid arguments
+    void testPriceConstructorAndAccessors() {
         int priceListId = 1;
-        long productId = 1001L;
-        int priority = 5;
-        ProductPrice productPrice = new ProductPrice(10.0, "USD");
-        Brand brand = new Brand(101, "Brand");
-        Date startDate = new Date();
-        Date endDate = new Date(startDate.getTime() + 3600000); // Add an hour
+        long productId = 35455L;
+        int priority = 10;
+        ProductPrice productPrice = new ProductPrice(100.0, "USD");
+        Brand brand = new Brand(1, "ZARA");
+        DateRange dateRange = new DateRange(new Date(), new Date());
 
-        // Create a Price instance
-        Price price = new Price(priceListId, productId, priority, productPrice, brand, new DateRange(startDate, endDate));
+        Price price = new Price(priceListId, productId, priority, productPrice, brand, dateRange);
 
-        // Verify that Price instance is created without exceptions
-        assertNotNull(price);
-
-        // Verify that fields have been set correctly
         assertEquals(priceListId, price.getPriceListId());
         assertEquals(productId, price.getProductId());
         assertEquals(priority, price.getPriority());
         assertEquals(productPrice, price.getProductPrice());
         assertEquals(brand, price.getBrand());
-        assertEquals(startDate, price.getDateRange().startDate());
-        assertEquals(endDate, price.getDateRange().endDate());
+        assertEquals(dateRange, price.getDateRange());
+
+        Price samePrice = new Price(priceListId, productId, priority, productPrice, brand, dateRange);
+        assertEquals(price, samePrice, "equals method should confirm that price objects are the same");
+        assertEquals(price.hashCode(), samePrice.hashCode(), "hashCode method should return the same hash code for equal objects");
+        assertNotNull(price.toString(), "toString should not return null");
     }
 
     @Test
-    void testPriceConstructorWithNullStartDate() {
-        // Create valid arguments with a null start date
-        int priceListId = 1;
-        long productId = 1001L;
-        int priority = 5;
-        ProductPrice productPrice = new ProductPrice(10.0, "USD");
-        Brand brand = new Brand(101, "Brand");
-        Date startDate = null; // Null start date
-        Date endDate = new Date();
+    void testPriceNotEquals() {
+        Price price1 = new Price(1, 35455L, 10, new ProductPrice(100.0, "USD"), new Brand(1, "ZARA"), new DateRange(new Date(), new Date()));
+        Price price2 = new Price(2, 35456L, 20, new ProductPrice(200.0, "EUR"), new Brand(2, "GUCCI"), new DateRange(new Date(), new Date()));
 
-        // Attempt to create a Price instance with a null start date
-        assertThrows(IllegalArgumentException.class, () -> new Price(priceListId, productId, priority, productPrice, brand, new DateRange(startDate, endDate)));
-    }
-
-    @Test
-    void testPriceConstructorWithInvalidStartDate() {
-        // Create valid arguments with an end date before the start date
-        int priceListId = 1;
-        long productId = 1001L;
-        int priority = 5;
-        ProductPrice productPrice = new ProductPrice(10.0, "USD");
-        Brand brand = new Brand(101, "Brand");
-        Date endDate = new Date();
-        Date startDate = new Date(endDate.getTime() + 3600000); // Add an hour; start date after end date
-
-        // Attempt to create a Price instance with an invalid start date
-        assertThrows(IllegalArgumentException.class, () -> new Price(priceListId, productId, priority, productPrice, brand, new DateRange(startDate, endDate)));
+        assertNotEquals(price1, price2, "equals method should confirm that price objects are not the same");
     }
 }
-

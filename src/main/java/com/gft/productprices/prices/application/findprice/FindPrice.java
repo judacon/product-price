@@ -18,7 +18,7 @@ public class FindPrice implements PriceService {
     }
 
     @Override
-    public Price getPrice(Date time, Long productId, Long brandId) throws PriceNotFoundException {
+    public Price getPrice(Date time, Long productId, Integer brandId) throws PriceNotFoundException {
         return priceRepository.findPrice(time, productId, brandId);
     }
 }

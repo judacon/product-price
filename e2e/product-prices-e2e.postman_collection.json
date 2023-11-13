@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "cbe2dfd1-e4ea-4e31-990e-025570309ab3",
+		"name": "product-prices-e2e",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12367225"
+	},
+	"item": [
+		{
+			"name": "Test 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Test productId value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.productId).to.eql(35455)",
+							"});",
+							"",
+							"pm.test(\"Test brandId value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.brandId).to.eql(1)",
+							"});",
+							"",
+							"pm.test(\"Test priceList value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.priceList).to.eql(1)",
+							"});",
+							"",
+							"pm.test(\"Test startDate value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.startDate).to.eql(\"2020-06-14 00:00:00.0\")",
+							"});",
+							"",
+							"pm.test(\"Test endDate value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.endDate).to.eql(\"2020-12-31 23:59:59.0\")",
+							"});",
+							"",
+							"pm.test(\"Test price value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.finalPrice).to.eql(35.5)",
+							"});",
+							"",
+							"pm.test(\"Test currency value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.currency).to.eql(\"EUR\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/getPrice?applicationDate=2020-06-14-10.00.00&productId=35455&brandId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getPrice"
+					],
+					"query": [
+						{
+							"key": "applicationDate",
+							"value": "2020-06-14-10.00.00"
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Test productId value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.productId).to.eql(35455)",
+							"});",
+							"",
+							"pm.test(\"Test brandId value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.brandId).to.eql(1)",
+							"});",
+							"",
+							"pm.test(\"Test priceList value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.priceList).to.eql(2)",
+							"});",
+							"",
+							"pm.test(\"Test startDate value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.startDate).to.eql(\"2020-06-14 15:00:00.0\")",
+							"});",
+							"",
+							"pm.test(\"Test endDate value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.endDate).to.eql(\"2020-06-14 18:30:00.0\")",
+							"});",
+							"",
+							"pm.test(\"Test price value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.finalPrice).to.eql(25.45)",
+							"});",
+							"",
+							"pm.test(\"Test currency value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.currency).to.eql(\"EUR\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/getPrice?applicationDate=2020-06-14-16.00.00&productId=35455&brandId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getPrice"
+					],
+					"query": [
+						{
+							"key": "applicationDate",
+							"value": "2020-06-14-16.00.00"
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Test productId value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.productId).to.eql(35455)",
+							"});",
+							"",
+							"pm.test(\"Test brandId value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.brandId).to.eql(1)",
+							"});",
+							"",
+							"pm.test(\"Test priceList value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.priceList).to.eql(1)",
+							"});",
+							"",
+							"pm.test(\"Test startDate value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.startDate).to.eql(\"2020-06-14 00:00:00.0\")",
+							"});",
+							"",
+							"pm.test(\"Test endDate value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.endDate).to.eql(\"2020-12-31 23:59:59.0\")",
+							"});",
+							"",
+							"pm.test(\"Test price value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.finalPrice).to.eql(35.5)",
+							"});",
+							"",
+							"pm.test(\"Test currency value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.currency).to.eql(\"EUR\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/getPrice?applicationDate=2020-06-14-21.00.00&productId=35455&brandId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getPrice"
+					],
+					"query": [
+						{
+							"key": "applicationDate",
+							"value": "2020-06-14-21.00.00"
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Test productId value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.productId).to.eql(35455)",
+							"});",
+							"",
+							"pm.test(\"Test brandId value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.brandId).to.eql(1)",
+							"});",
+							"",
+							"pm.test(\"Test priceList value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.priceList).to.eql(3)",
+							"});",
+							"",
+							"pm.test(\"Test startDate value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.startDate).to.eql(\"2020-06-15 00:00:00.0\")",
+							"});",
+							"",
+							"pm.test(\"Test endDate value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.endDate).to.eql(\"2020-06-15 11:00:00.0\")",
+							"});",
+							"",
+							"pm.test(\"Test price value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.finalPrice).to.eql(30.5)",
+							"});",
+							"",
+							"pm.test(\"Test currency value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.currency).to.eql(\"EUR\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/getPrice?applicationDate=2020-06-15-10.00.00&productId=35455&brandId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getPrice"
+					],
+					"query": [
+						{
+							"key": "applicationDate",
+							"value": "2020-06-15-10.00.00"
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Test productId value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.productId).to.eql(35455)",
+							"});",
+							"",
+							"pm.test(\"Test brandId value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.brandId).to.eql(1)",
+							"});",
+							"",
+							"pm.test(\"Test priceList value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.priceList).to.eql(4)",
+							"});",
+							"",
+							"pm.test(\"Test startDate value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.startDate).to.eql(\"2020-06-15 16:00:00.0\")",
+							"});",
+							"",
+							"pm.test(\"Test endDate value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.endDate).to.eql(\"2020-12-31 23:59:59.0\")",
+							"});",
+							"",
+							"pm.test(\"Test price value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.finalPrice).to.eql(38.95)",
+							"});",
+							"",
+							"pm.test(\"Test currency value\", () => {",
+							"    const jsonData = pm.response.json();",
+							"    pm.expect(jsonData.currency).to.eql(\"EUR\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/getPrice?applicationDate=2020-06-16-21.00.00&productId=35455&brandId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"getPrice"
+					],
+					"query": [
+						{
+							"key": "applicationDate",
+							"value": "2020-06-16-21.00.00"
+						},
+						{
+							"key": "productId",
+							"value": "35455"
+						},
+						{
+							"key": "brandId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

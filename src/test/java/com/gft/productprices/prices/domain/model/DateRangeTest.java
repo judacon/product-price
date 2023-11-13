@@ -1,41 +1,54 @@
 package com.gft.productprices.prices.domain.model;
 
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import java.util.Date;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DateRangeTest {
 
     @Test
-    void testValidDateRange() {
-        Date startDate = new Date(0); // January 1, 1970
-        Date endDate = new Date(10000); // January 1, 1970 (10,000 milliseconds later)
+    void shouldThrowExceptionWhenStartDateIsNull() {
+        Date validEndDate = new Date();
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new DateRange(null, validEndDate);
+        });
+
+        assertEquals("Start date and end date must not be null", exception.getMessage());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenEndDateIsNull() {
+        Date validStartDate = new Date();
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new DateRange(validStartDate, null);
+        });
+
+        assertEquals("Start date and end date must not be null", exception.getMessage());
+    }
+
+    @Test
+    void shouldThrowExceptionWhenStartDateIsAfterEndDate() {
+        Date startDate = new Date();
+        Date endDate = new Date(startDate.getTime() - 1000);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new DateRange(startDate, endDate);
+        });
+
+        assertEquals("The end date must be after the start date", exception.getMessage());
+    }
+
+    @Test
+    void shouldCreateDateRangeWhenValidDatesAreProvided() {
+        Date startDate = new Date();
+        Date endDate = new Date(startDate.getTime() + 1000);
 
         DateRange dateRange = new DateRange(startDate, endDate);
 
         assertNotNull(dateRange);
-    }
-
-    @Test
-    void testNullStartDate() {
-        Date endDate = new Date();
-
-        assertThrows(IllegalArgumentException.class, () -> new DateRange(null, endDate));
-    }
-
-    @Test
-    void testNullEndDate() {
-        Date startDate = new Date();
-
-        assertThrows(IllegalArgumentException.class, () -> new DateRange(startDate, null));
-    }
-
-    @Test
-    void testEndDateBeforeStartDate() {
-        Date startDate = new Date();
-        Date endDate = new Date(0); // Earlier date
-
-        assertThrows(IllegalArgumentException.class, () -> new DateRange(startDate, endDate));
+        assertEquals(startDate, dateRange.startDate());
+        assertEquals(endDate, dateRange.endDate());
     }
 }

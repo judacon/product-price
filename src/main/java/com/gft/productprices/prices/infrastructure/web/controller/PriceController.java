@@ -31,19 +31,12 @@ public class PriceController {
     public ResponseEntity<PriceResponse> getPrice(
             @RequestParam(name = "applicationDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd-HH.mm.ss" ) Date applicationDate,
             @RequestParam(name = "productId" ) Long productId,
-            @RequestParam(name = "brandId") Long brandId) throws PriceNotFoundException {
+            @RequestParam(name = "brandId") Integer brandId) throws PriceNotFoundException {
 
         if (applicationDate == null) {
             applicationDate = new Date();
         }
 
-        PriceResponse priceResponse = priceResponseMapper.domainToResponse(priceService.getPrice(applicationDate, productId, brandId));
-
-        if (priceResponse != null) {
-            return ResponseEntity.ok(priceResponse);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(priceResponseMapper.domainToResponse(priceService.getPrice(applicationDate, productId, brandId)));
     }
-
 }

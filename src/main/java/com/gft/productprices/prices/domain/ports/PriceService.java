@@ -7,5 +7,5 @@ import java.util.Date;
 
 public interface PriceService {
 
-    Price getPrice(Date time, Long productId, Long brandId) throws PriceNotFoundException;
+    Price getPrice(Date time, Long productId, Integer brandId) throws PriceNotFoundException;
 }

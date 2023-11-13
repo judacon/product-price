@@ -3,7 +3,6 @@ import com.gft.productprices.prices.domain.model.Brand;
 import com.gft.productprices.prices.domain.model.DateRange;
 import com.gft.productprices.prices.domain.model.Price;
 import com.gft.productprices.prices.domain.model.ProductPrice;
-import com.gft.productprices.prices.domain.ports.PriceRepository;
 import com.gft.productprices.prices.infrastructure.persistence.entities.PriceEntity;
 import com.gft.productprices.prices.infrastructure.persistence.mapper.PriceEntityMapper;
 import com.gft.productprices.prices.infrastructure.persistence.repository.JpaPriceRepository;
@@ -16,10 +15,10 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-public class H2PriceRepositoryTest {
+class H2PriceRepositoryTest {
 
     @InjectMocks
     private H2PriceRepository h2PriceRepository;
@@ -36,37 +35,48 @@ public class H2PriceRepositoryTest {
     }
 
     @Test
-    public void testFindPrice() throws PriceNotFoundException {
-        // Mock data
+    void testFindPrice() throws PriceNotFoundException {
         Date applicationDate = new Date();
         Long productId = 100L;
-        Long brandId = 3L;
+        Integer brandId = 3;
 
-        // Create a mock PriceEntity
         PriceEntity priceEntity = new PriceEntity();
-        // Set up other mock data for priceEntity...
 
-        // Set up the behavior of jpaPriceRepository
         when(jpaPriceRepository.findPrice(productId, brandId, applicationDate)).thenReturn(priceEntity);
 
-        // Create a mock Price object
         Price mockPrice = new Price(
-                1, // priceListId
-                100L, // productId
-                3, // priority
-                new ProductPrice(50.0, "USD"), // productPrice
-                new Brand(1, "Brand"), // brand
-                new DateRange(new Date(), new Date()) // dateRange
+                1,
+                100L,
+                3,
+                new ProductPrice(50.0, "USD"),
+                new Brand(1, "Brand"),
+                new DateRange(new Date(), new Date())
         );
-        // Set up other mock data for mockPrice...
 
-        // Set up the behavior of priceEntityMapper
+
         when(priceEntityMapper.entityToDomain(priceEntity)).thenReturn(mockPrice);
 
-        // Call the method under test
         Price result = h2PriceRepository.findPrice(applicationDate, productId, brandId);
 
-        // Verify the result
         assertEquals(mockPrice, result);
+    }
+
+    @Test
+    void findPrice_ShouldThrowPriceNotFoundException_WhenPriceEntityIsNull() {
+        Long productId = 1L;
+        Integer brandId = 1;
+        Date applicationDate = new Date();
+
+        when(jpaPriceRepository.findPrice(productId, brandId, applicationDate)).thenReturn(null);
+
+        PriceNotFoundException thrown = assertThrows(
+                PriceNotFoundException.class,
+                () -> h2PriceRepository.findPrice(applicationDate, productId, brandId),
+                "Expected findPrice to throw PriceNotFoundException, but it didn't"
+        );
+
+        assertTrue(thrown.getMessage().contains("productId: " + productId));
+        assertTrue(thrown.getMessage().contains("brandId: " + brandId));
+        assertTrue(thrown.getMessage().contains("applicationDate: " + applicationDate));
     }
 }

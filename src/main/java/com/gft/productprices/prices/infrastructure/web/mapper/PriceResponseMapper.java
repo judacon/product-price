@@ -11,10 +11,10 @@ public class PriceResponseMapper {
     public PriceResponse domainToResponse(Price price) {
         return new PriceResponse(price.getProductId(),
                 price.getBrand().brandId(),
-                price.getProductPrice().amount(),
+                price.getPriceListId(),
                 price.getProductPrice().currencyCode(),
-                price.getDateRange().startDate(),
-                price.getDateRange().endDate(),
+                price.getDateRange().startDate().toString(),
+                price.getDateRange().endDate().toString(),
                 price.getProductPrice().amount());
     }
 }

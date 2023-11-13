@@ -12,7 +12,7 @@ public class PriceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "BRAND_ID")
     private Integer brandId;
@@ -27,7 +27,7 @@ public class PriceEntity {
     private Integer priceList;
 
     @Column(name = "PRODUCT_ID")
-    private Long productId;
+    private Integer productId;
 
     @Column(name = "PRIORITY")
     private Integer priority;
