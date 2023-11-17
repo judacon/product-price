@@ -60,7 +60,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/getPrice?applicationDate=2020-06-14-10.00.00&productId=35455&brandId=1",
+					"raw": "http://localhost:8080/api/prices?applicationDate=2020-06-14 10:00:00&productId=35455&brandId=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -68,12 +68,12 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"getPrice"
+						"prices"
 					],
 					"query": [
 						{
 							"key": "applicationDate",
-							"value": "2020-06-14-10.00.00"
+							"value": "2020-06-14 10:00:00"
 						},
 						{
 							"key": "productId",
@@ -142,7 +142,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/getPrice?applicationDate=2020-06-14-16.00.00&productId=35455&brandId=1",
+					"raw": "http://localhost:8080/api/prices?applicationDate=2020-06-14 16:00:00&productId=35455&brandId=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -150,12 +150,12 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"getPrice"
+						"prices"
 					],
 					"query": [
 						{
 							"key": "applicationDate",
-							"value": "2020-06-14-16.00.00"
+							"value": "2020-06-14 16:00:00"
 						},
 						{
 							"key": "productId",
@@ -224,7 +224,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/getPrice?applicationDate=2020-06-14-21.00.00&productId=35455&brandId=1",
+					"raw": "http://localhost:8080/api/prices?applicationDate=2020-06-14 21:00:00&productId=35455&brandId=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -232,12 +232,12 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"getPrice"
+						"prices"
 					],
 					"query": [
 						{
 							"key": "applicationDate",
-							"value": "2020-06-14-21.00.00"
+							"value": "2020-06-14 21:00:00"
 						},
 						{
 							"key": "productId",
@@ -306,7 +306,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/getPrice?applicationDate=2020-06-15-10.00.00&productId=35455&brandId=1",
+					"raw": "http://localhost:8080/api/prices?applicationDate=2020-06-15 10:00:00&productId=35455&brandId=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -314,12 +314,12 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"getPrice"
+						"prices"
 					],
 					"query": [
 						{
 							"key": "applicationDate",
-							"value": "2020-06-15-10.00.00"
+							"value": "2020-06-15 10:00:00"
 						},
 						{
 							"key": "productId",
@@ -388,7 +388,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/getPrice?applicationDate=2020-06-16-21.00.00&productId=35455&brandId=1",
+					"raw": "http://localhost:8080/api/prices?applicationDate=2020-06-16 21:00:00&productId=35455&brandId=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -396,12 +396,12 @@
 					"port": "8080",
 					"path": [
 						"api",
-						"getPrice"
+						"prices"
 					],
 					"query": [
 						{
 							"key": "applicationDate",
-							"value": "2020-06-16-21.00.00"
+							"value": "2020-06-16 21:00:00"
 						},
 						{
 							"key": "productId",

@@ -8,6 +8,7 @@ import com.gft.productprices.prices.infrastructure.persistence.repository.JpaPri
 import com.gft.productprices.prices.infrastructure.web.exceptions.PriceNotFoundException;
 import org.springframework.stereotype.Repository;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Repository
@@ -28,7 +29,8 @@ public class H2PriceRepository implements PriceRepository{
         PriceEntity priceEntity=jpaPriceRepository.findPrice(productId, brandId, applicationDate);
         if (priceEntity == null) {
             throw new PriceNotFoundException("productId: " + productId
-                    + ", brandId: " + brandId + ", applicationDate: " + applicationDate);
+                    + ", brandId: " + brandId + ", applicationDate: "
+                    + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(applicationDate));
         }
         return priceEntityMapper.entityToDomain(priceEntity);
     }

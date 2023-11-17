@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -77,6 +78,6 @@ class H2PriceRepositoryTest {
 
         assertTrue(thrown.getMessage().contains("productId: " + productId));
         assertTrue(thrown.getMessage().contains("brandId: " + brandId));
-        assertTrue(thrown.getMessage().contains("applicationDate: " + applicationDate));
+        assertTrue(thrown.getMessage().contains("applicationDate: " +  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(applicationDate)));
     }
 }
