@@ -19,14 +19,15 @@ Devuelve como datos de salida:
 
 Se utilizo el siguiente stack tecnologico para su desarrollo
 
-| Tecnologia | Descripcion |
-| ------ | ------ |
-| Java 17 | Jenguaje de programacion |
-| Spring | Framework de desarrollo |
+| Tecnologia | Descripcion                                   |
+|------------|-----------------------------------------------|
+| Java 17    | Jenguaje de programacion                      |
+| Spring     | Framework de desarrollo                       |
 | Spring JPA | API de persistencia desarrollada para Java EE |
-| H2 | Base de datos en memoria |
-| Lombock | Herramienta para minimizar boilerplate code |
-| Junit | Framework para testing |
+| H2         | Base de datos en memoria                      |
+| Lombock    | Herramienta para minimizar boilerplate code   |
+| Junit      | Framework para testing                        |
+| Swagger 3  | Documentacion                                 |
 
 ## Instalacion
 
@@ -35,6 +36,15 @@ Para ejecutar el proyecto
 ```sh
 ./mvnw spring-boot:run
 ```
+
+
+## Documentacion
+
+Una vez ejecutado el proyecto se puede acceder a la documentacion con Swagger 3
+```sh
+http://localhost:8080/swagger-ui/index.html
+```
+
 ## Ejecutar los tests
 
 ```shell
@@ -54,6 +64,15 @@ Los test e2e fueron desarrollados con Postman, se deben importar desde:
 ```shell
 e2e/product-prices-e2e.postman_collection.json
 ```
+## Docker
+
+Si se desea se puede ejecutar la aplicacion utilizando el archivo Dockerfile que configura el ambiente
+y clona el repositorio directamente
+
+```shell
+docker/Dockerfile
+```
+
 
 ## Enunciado
 
